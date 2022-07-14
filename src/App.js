@@ -59,21 +59,21 @@ function App() {
       <section className="my-services">
         <div className="services">
           <div className="service">
-            <h3>Tech</h3>
+            <h3 className="secondary-title">Tech</h3>
             <p>
               HTML, CSS, JavaScript, React. I have build various React
               applications including those within my portfolio.
             </p>
           </div>{" "}
           <div className="service">
-            <h3>Interests</h3>
+            <h3 className="secondary-title">Interests</h3>
             <p>
               My interests include reading books and learning new things, going
               to the gym, and playing sports.{" "}
             </p>
           </div>{" "}
           <div className="service">
-            <h3>Upcoming</h3>
+            <h3 className="secondary-title">Upcoming</h3>
 
             <p>
               As I learn and improve my skills, this portfolio will be updated.
@@ -92,7 +92,7 @@ function App() {
         </p>
         <div className="portfolio">
           <div className="portfolio-item">
-            <h3>Pokédex</h3>
+            <h3 className="secondary-title">Pokédex</h3>
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
@@ -128,7 +128,7 @@ function App() {
             <p>Tech: React and CSS</p>
           </div>
           <div className="portfolio-item">
-            <h3>Palindrome Prime</h3>
+            <h3 className="secondary-title">Palindrome Prime</h3>
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
@@ -165,7 +165,7 @@ function App() {
             <p>Tech: React and CSS</p>
           </div>
           <div className="portfolio-item">
-            <h3>Speed Typing Game</h3>
+            <h3 className="secondary-title">Speed Typing Game</h3>
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
@@ -199,7 +199,7 @@ function App() {
             <p>Tech: React and CSS</p>
           </div>
           <div className="portfolio-item">
-            <h3>Tenzies</h3>
+            <h3 className="secondary-title">Tenzies</h3>
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
@@ -236,7 +236,7 @@ function App() {
             <p>Tech: React and CSS</p>
           </div>
           <div className="portfolio-item">
-            <h3>Meme Generator</h3>
+            <h3 className="secondary-title">Meme Generator</h3>
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
@@ -273,7 +273,7 @@ function App() {
             <p>Tech: React and CSS</p>
           </div>
           <div>
-            <h3>Travel Journal</h3>
+            <h3 className="secondary-title">Travel Journal</h3>
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
