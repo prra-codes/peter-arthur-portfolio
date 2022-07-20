@@ -61,7 +61,7 @@ function App() {
           <div className="service">
             <h3 className="secondary-title">Tech</h3>
             <p>
-              HTML, CSS, JavaScript, React. I have build various React
+              HTML, CSS, JavaScript, React. I have built various React
               applications including those within my portfolio.
             </p>
           </div>{" "}
