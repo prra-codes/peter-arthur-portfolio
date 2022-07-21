@@ -1,4 +1,4 @@
-import myProfilePicture from "./images/peter-profile-picture.jpg";
+import profilePicture from "./images/peter-arthur-profile.jpg";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
@@ -31,7 +31,8 @@ function App() {
           front-end dev
         </p>
         <img
-          src={myProfilePicture}
+          // src={myProfilePicture}
+          src={profilePicture}
           alt="a picture of Peter Arthur"
           className="intro__img"
         />
