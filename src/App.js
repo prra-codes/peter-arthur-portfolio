@@ -31,7 +31,6 @@ function App() {
           front-end dev
         </p>
         <img
-          // src={myProfilePicture}
           src={profilePicture}
           alt="a picture of Peter Arthur"
           className="intro__img"
@@ -315,9 +314,10 @@ function App() {
 
       <footer className="footer" id="contact">
         <p className="footer-title">CONTACT</p>
-        <a href="mailto:peter.arth5@gmail.com" className="footer__link">
+
+        <a href="mailto:prra@prra.codes" className="footer__link">
           {" "}
-          peter.arth5@gmail.com
+          prra@prra.codes
         </a>
 
         <ul className="social-list">
@@ -331,10 +331,7 @@ function App() {
             </a>
           </li>
           <li className="social-list__item">
-            <a
-              className="social-list__link"
-              href="mailto:peter.arth5@gmail.com"
-            >
+            <a className="social-list__link" href="mailto:prra@prra.codes">
               <IoMdMail />
             </a>
           </li>
