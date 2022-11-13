@@ -310,7 +310,7 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/*Footer*/}
 
       <footer className="footer" id="contact">
         <p className="footer-title">CONTACT</p>
