@@ -96,7 +96,7 @@ function App() {
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
-                  href="https://peter-135.github.io/pokedex/"
+                  href="https://prra-codes.github.io/pokedex/"
                   className="site"
                   target="_blank"
                 >
@@ -108,7 +108,7 @@ function App() {
               </li>
               <li className="nav_item">
                 <a
-                  href="https://github.com/Peter-135/pokedex.git"
+                  href="https://github.com/prra-codes/pokedex.git"
                   className="site"
                   target="_blank"
                 >
@@ -132,7 +132,7 @@ function App() {
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
-                  href="https://peter-135.github.io/palindrome-prime/"
+                  href="https://prra-codes.github.io/palindrome-prime/"
                   className="site"
                   target="_blank"
                 >
@@ -144,7 +144,7 @@ function App() {
               </li>
               <li className="nav_item">
                 <a
-                  href="https://github.com/Peter-135/palindrome-prime.git"
+                  href="https://github.com/prra-codes/palindrome-prime.git"
                   className="site"
                   target="_blank"
                 >
@@ -169,7 +169,7 @@ function App() {
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
-                  href="https://peter-135.github.io/speed-typing-game/"
+                  href="https://prra-codes.github.io/speed-typing-game/"
                   className="site"
                   target="_blank"
                 >
@@ -181,7 +181,7 @@ function App() {
               </li>
               <li className="nav_item">
                 <a
-                  href="https://github.com/Peter-135/speed-typing-game.git"
+                  href="https://github.com/prra-codes/speed-typing-game.git"
                   className="site"
                   target="_blank"
                 >
@@ -203,7 +203,7 @@ function App() {
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
-                  href="https://peter-135.github.io/tenzies/"
+                  href="https://prra-codes.github.io/tenzies/"
                   className="site"
                   target="_blank"
                 >
@@ -215,7 +215,7 @@ function App() {
               </li>
               <li className="nav_item">
                 <a
-                  href="https://github.com/Peter-135/tenzies.git"
+                  href="https://github.com/prra-codes/tenzies.git"
                   className="site"
                   target="_blank"
                 >
@@ -240,7 +240,7 @@ function App() {
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
-                  href="https://peter-135.github.io/meme-generator/"
+                  href="https://prra-codes.github.io/meme-generator/"
                   className="site"
                   target="_blank"
                 >
@@ -252,7 +252,7 @@ function App() {
               </li>
               <li className="nav_item">
                 <a
-                  href="https://github.com/Peter-135/meme-generator.git"
+                  href="https://github.com/prra-codes/meme-generator.git"
                   className="site"
                   target="_blank"
                 >
@@ -277,7 +277,7 @@ function App() {
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
-                  href="https://peter-135.github.io/travel-journal/"
+                  href="https://prra-codes.github.io/travel-journal/"
                   className="site"
                   target="_blank"
                 >
@@ -289,7 +289,7 @@ function App() {
               </li>
               <li className="nav_item">
                 <a
-                  href="https://github.com/Peter-135/travel-journal.git"
+                  href="https://github.com/prra-codes/travel-journal.git"
                   className="site"
                   target="_blank"
                 >
@@ -324,7 +324,7 @@ function App() {
           <li className="social-list__item">
             <a
               className="social-list__link"
-              href="https://github.com/Peter-135"
+              href="https://github.com/prra-codes"
               target="_blank"
             >
               <FaGithub />
@@ -338,7 +338,7 @@ function App() {
           <li className="social-list__item">
             <a
               className="social-list__link"
-              href="https://www.linkedin.com/in/peter-arthur-9964a323a"
+              href="https://www.linkedin.com/in/peter-arthur/"
               target="_blank"
             >
               <FaLinkedin />
