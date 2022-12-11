@@ -7,19 +7,23 @@ import { GoGlobe } from "react-icons/go";
 function App() {
   return (
     <div>
-      <nav>
-        <ul className="nav_list">
-          <li className="nav_item">
-            <a href="#about">About</a>
-          </li>
-          <li className="nav_item">
-            <a href="#projects">Projects</a>
-          </li>
-          <li className="nav_item">
-            <a href="#contact">Contact</a>
-          </li>
-        </ul>
-      </nav>
+      <div className="dark-background">
+        <div className="max-width-1000 margin-auto">
+          <nav>
+            <ul className="nav_list">
+              <li className="nav_item">
+                <a href="#about">About</a>
+              </li>
+              <li className="nav_item">
+                <a href="#projects">Projects</a>
+              </li>
+              <li className="nav_item">
+                <a href="#contact">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
 
       {/* Introduction */}
 
@@ -39,41 +43,46 @@ function App() {
 
       {/* About me */}
 
-      <section className="about-background about-me-intro" id="about">
-        <h2 className="center">Who I am</h2>
-        <p className="section__subtitle section__subtitle--about center more-space">
-          Developer based out of London
-        </p>
-        <div className="about-me__body">
-          <p>
-            An ambitious and driven individual willing to learn and apply new
-            processes and procedures. Passionate about technology. Energetic and
-            enthusiastic, brightening up the atmosphere. A team player always
-            willing to improve.
+      <div className="center-section">
+        <section
+          className="about-background about-me-intro max-width-1000"
+          id="about"
+        >
+          <h2 className="center">Who I am</h2>
+          <p className="section__subtitle section__subtitle--about center more-space">
+            Developer based out of London
           </p>
-        </div>
-      </section>
+          <div className="about-me__body">
+            <p>
+              An ambitious and driven individual willing to learn and apply new
+              processes and procedures. Passionate about technology. Energetic
+              and enthusiastic, brightening up the atmosphere. A team player
+              always willing to improve.
+            </p>
+          </div>
+        </section>
+      </div>
 
       {/* My services */}
 
       <section className="my-services">
         <div className="services">
           <div className="service">
-            <h3 className="secondary-title">Tech</h3>
+            <h3 className="secondary-title text-align-center">Tech</h3>
             <p>
               HTML, CSS, JavaScript, React. I have built various React
               applications including those within my portfolio.
             </p>
           </div>{" "}
           <div className="service">
-            <h3 className="secondary-title">Interests</h3>
+            <h3 className="secondary-title  text-align-center">Interests</h3>
             <p>
               My interests include reading books and learning new things, going
               to the gym, and playing sports.{" "}
             </p>
           </div>{" "}
           <div className="service">
-            <h3 className="secondary-title">Upcoming</h3>
+            <h3 className="secondary-title  text-align-center">Upcoming</h3>
 
             <p>
               As I learn and improve my skills, this portfolio will be updated.
@@ -119,12 +128,14 @@ function App() {
                 </a>
               </li>
             </ul>
-            <p>
-              A Pokédex app! I've been a Pokémon fan for a very long time, so I
-              thought it would be fun to create a pokedex. This app uses the
-              Pokémon API to gather data about the pokemon and display it within
-              the app.
-            </p>
+            <div className="center-section">
+              <p className="text-align-start max-width-1000">
+                A Pokédex app! I've been a Pokémon fan for a very long time, so
+                I thought it would be fun to create a pokedex. This app uses the
+                Pokémon API to gather data about the pokemon and display it
+                within the app.
+              </p>
+            </div>
             <p>Tech: React and CSS</p>
           </div>
           <div className="portfolio-item">
@@ -155,13 +166,14 @@ function App() {
                 </a>
               </li>
             </ul>
-
-            <p>
-              This is a app I created that tests for a range of numbers, to
-              examine if they are both a Prime Number (a number that is
-              divisible by itself and 1) and a Palindrome (a phrase or sequence
-              that reads the same backwards as forwards).
-            </p>
+            <div className="center-section">
+              <p className="text-align-start max-width-1000">
+                This is a app I created that tests for a range of numbers, to
+                examine if they are both a Prime Number (a number that is
+                divisible by itself and 1) and a Palindrome (a phrase or
+                sequence that reads the same backwards as forwards).
+              </p>
+            </div>
             <p>Tech: React and CSS</p>
           </div>
           <div className="portfolio-item">
@@ -192,10 +204,13 @@ function App() {
                 </a>
               </li>
             </ul>
-            <p>
-              This app checks how many words someone can type within 15 seconds.
-              A user can play as much as they like and try to beat their record!
-            </p>
+            <div className="center-section">
+              <p className="text-align-start max-width-1000">
+                This app checks how many words someone can type within 15
+                seconds. A user can play as much as they like and try to beat
+                their record!
+              </p>
+            </div>
             <p>Tech: React and CSS</p>
           </div>
           <div className="portfolio-item">
@@ -226,12 +241,13 @@ function App() {
                 </a>
               </li>
             </ul>
-
-            <p>
-              This is a Tenzies game I created using React. A user can press the
-              roll button to generate dice rolls and click the number cards to
-              freeze the numbers until they reach Tenzies!
-            </p>
+            <div className="center-section">
+              <p className="text-align-start max-width-1000">
+                This is a Tenzies game I created using React. A user can press
+                the roll button to generate dice rolls and click the number
+                cards to freeze the numbers until they reach Tenzies!
+              </p>
+            </div>
 
             <p>Tech: React and CSS</p>
           </div>
@@ -264,11 +280,13 @@ function App() {
               </li>
             </ul>
 
-            <p>
-              Memes are everywhere on the internet, so I knew it would be
-              interesting to build a Meme Generator . A user can type in the
-              text boxes and generate a random meme by clicking on the button.
-            </p>
+            <div className="center-section">
+              <p className="text-align-start max-width-1000">
+                Memes are everywhere on the internet, so I knew it would be
+                interesting to build a Meme Generator . A user can type in the
+                text boxes and generate a random meme by clicking on the button.
+              </p>
+            </div>
 
             <p>Tech: React and CSS</p>
           </div>
@@ -301,10 +319,12 @@ function App() {
               </li>
             </ul>
 
-            <p>
-              Here is a travel journal app I created, which shows some of my
-              travels abroad!
-            </p>
+            <div className="center-section">
+              <p className="text-align-start max-width-1000">
+                Here is a travel journal app I created, which shows some of my
+                travels abroad!
+              </p>
+            </div>
             <p>Tech: React and CSS</p>
           </div>
         </div>
@@ -346,6 +366,7 @@ function App() {
           </li>
         </ul>
       </footer>
+      {/* </div> */}
     </div>
   );
 }

@@ -27,6 +27,27 @@
     0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
 }
 
+.dark-background {
+  background: var(--clr-dark);
+}
+
+.center-section {
+  display: flex;
+  justify-content: center;
+}
+
+.max-width-1000 {
+  max-width: 1000px;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
 p {
   font-size: 1.5rem;
 }
@@ -65,7 +86,8 @@ body {
 
 .about-me-intro {
   padding: 2em 2em;
-  text-align: center;
+  /* text-align: center; */
+  text-align: start;
 }
 
 .my-projects-section {
@@ -158,8 +180,7 @@ h3 {
 }
 
 .nav_list {
-  background: var(--clr-dark);
-
+  /* background: var(--clr-dark); */
   margin: 0;
   padding: 1rem 0;
   display: flex;
@@ -233,7 +254,8 @@ h3 {
   color: var(--clr-dark);
   background-size: cover;
   background-blend-mode: multiply;
-  text-align: center;
+  /* text-align: center; */
+  text-align: start;
 }
 
 .section__title--services {
@@ -290,6 +312,10 @@ h3 {
 
 .more-space {
   margin-top: 0.5em;
+}
+
+.text-align-start {
+  text-align: start;
 }
 
 /* My Work */
