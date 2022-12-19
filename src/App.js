@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <div className="dark-background">
-        <div className="max-width-1000 margin-auto">
+        <div className="max-width-870 margin-auto">
           <nav>
             <ul className="nav_list">
               <li className="nav_item">
@@ -45,19 +45,17 @@ function App() {
 
       <div className="center-section">
         <section
-          className="about-background about-me-intro max-width-1000"
+          className="about-background about-me-intro max-width-870"
           id="about"
         >
           <h2 className="center">Who I am</h2>
           <p className="section__subtitle section__subtitle--about center more-space">
-            Developer based out of London
+            Economics graduate turned React developer
           </p>
           <div className="about-me__body">
             <p>
-              An ambitious and driven individual willing to learn and apply new
-              processes and procedures. Passionate about technology. Energetic
-              and enthusiastic, brightening up the atmosphere. A team player
-              always willing to improve.
+              Working to grow as a front-end developer and also gain skill at
+              core algorithms and data structures.
             </p>
           </div>
         </section>
@@ -68,21 +66,21 @@ function App() {
       <section className="my-services">
         <div className="services">
           <div className="service">
-            <h3 className="secondary-title text-align-center">Tech</h3>
+            <h3 className="secondary-title text-align-start">Tech</h3>
             <p>
               HTML, CSS, JavaScript, React. I have built various React
               applications including those within my portfolio.
             </p>
           </div>{" "}
           <div className="service">
-            <h3 className="secondary-title  text-align-center">Interests</h3>
+            <h3 className="secondary-title  text-align-start">Interests</h3>
             <p>
               My interests include reading books and learning new things, going
               to the gym, and playing sports.{" "}
             </p>
           </div>{" "}
           <div className="service">
-            <h3 className="secondary-title  text-align-center">Upcoming</h3>
+            <h3 className="secondary-title  text-align-start">Upcoming</h3>
 
             <p>
               As I learn and improve my skills, this portfolio will be updated.
@@ -97,11 +95,11 @@ function App() {
       <section className="my-work my-projects-section" id="projects">
         <h2 className="section__title section__title--work">Projects</h2>
         <p className="section__subtitle section__subtitle--work">
-          A selection of my range of projects
+          All projects built with React and CSS, deployed with Github pages
         </p>
         <div className="portfolio">
           <div className="portfolio-item">
-            <h3 className="secondary-title">Pokédex</h3>
+            <h3 className="secondary-title-intro">Pokédex</h3>
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
@@ -129,17 +127,16 @@ function App() {
               </li>
             </ul>
             <div className="center-section">
-              <p className="text-align-start max-width-1000">
+              <p className="text-align-start max-width-section">
                 A Pokédex app! I've been a Pokémon fan for a very long time, so
                 I thought it would be fun to create a pokedex. This app uses the
                 Pokémon API to gather data about the pokemon and display it
                 within the app.
               </p>
             </div>
-            <p>Tech: React and CSS</p>
           </div>
           <div className="portfolio-item">
-            <h3 className="secondary-title">Palindrome Prime</h3>
+            <h3 className="secondary-title-intro">Palindrome Prime</h3>
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
@@ -167,17 +164,16 @@ function App() {
               </li>
             </ul>
             <div className="center-section">
-              <p className="text-align-start max-width-1000">
+              <p className="text-align-start max-width-section">
                 This is a app I created that tests for a range of numbers, to
                 examine if they are both a Prime Number (a number that is
                 divisible by itself and 1) and a Palindrome (a phrase or
                 sequence that reads the same backwards as forwards).
               </p>
             </div>
-            <p>Tech: React and CSS</p>
           </div>
           <div className="portfolio-item">
-            <h3 className="secondary-title">Speed Typing Game</h3>
+            <h3 className="secondary-title-intro">Speed Typing Game</h3>
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
@@ -205,16 +201,15 @@ function App() {
               </li>
             </ul>
             <div className="center-section">
-              <p className="text-align-start max-width-1000">
+              <p className="text-align-start max-width-section">
                 This app checks how many words someone can type within 15
                 seconds. A user can play as much as they like and try to beat
                 their record!
               </p>
             </div>
-            <p>Tech: React and CSS</p>
           </div>
           <div className="portfolio-item">
-            <h3 className="secondary-title">Tenzies</h3>
+            <h3 className="secondary-title-intro">Tenzies</h3>
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
@@ -242,17 +237,15 @@ function App() {
               </li>
             </ul>
             <div className="center-section">
-              <p className="text-align-start max-width-1000">
+              <p className="text-align-start max-width-section">
                 This is a Tenzies game I created using React. A user can press
                 the roll button to generate dice rolls and click the number
                 cards to freeze the numbers until they reach Tenzies!
               </p>
             </div>
-
-            <p>Tech: React and CSS</p>
           </div>
           <div className="portfolio-item">
-            <h3 className="secondary-title">Meme Generator</h3>
+            <h3 className="secondary-title-intro">Meme Generator</h3>
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
@@ -281,17 +274,15 @@ function App() {
             </ul>
 
             <div className="center-section">
-              <p className="text-align-start max-width-1000">
+              <p className="text-align-start max-width-section">
                 Memes are everywhere on the internet, so I knew it would be
-                interesting to build a Meme Generator . A user can type in the
+                interesting to build a Meme Generator. A user can type in the
                 text boxes and generate a random meme by clicking on the button.
               </p>
             </div>
-
-            <p>Tech: React and CSS</p>
           </div>
           <div>
-            <h3 className="secondary-title">Travel Journal</h3>
+            <h3 className="secondary-title-intro">Travel Journal</h3>
             <ul className="site-and-github">
               <li className="nav_item">
                 <a
@@ -320,12 +311,12 @@ function App() {
             </ul>
 
             <div className="center-section">
-              <p className="text-align-start max-width-1000">
+              <p className="text-align-start max-width-section">
                 Here is a travel journal app I created, which shows some of my
-                travels abroad!
+                travels abroad! It currently shows some details about my trip to
+                Japan in the year 2018.
               </p>
             </div>
-            <p>Tech: React and CSS</p>
           </div>
         </div>
       </section>
