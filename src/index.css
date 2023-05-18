@@ -31,17 +31,36 @@
   background: var(--clr-dark);
 }
 
+.testing-one {
+  /* background-color: green; */
+}
+
+.testing-two {
+  /* background-color: yellow; */
+}
+
+.flex-website-and-connect-four {
+  display: flex;
+}
+
 .center-section {
   display: flex;
   justify-content: center;
 }
 
-.max-width-870 {
-  max-width: 870px;
+/* .max-width-50-percent { */
+/* max-width: 870px; */
+/* max-width: 50%; */
+/* } */
+
+.intro-width {
+  /* max-width: 50%; */
+  /* min-width: 500px; */
+  max-width: 600px;
 }
 
-.max-width-section {
-  max-width: 800px;
+.connect-four-width {
+  max-width: 50%;
 }
 
 .margin-auto {
@@ -96,6 +115,7 @@ body {
 
 .section-intro {
   padding: 4em 2em;
+  /* background-color: red; */
 }
 
 .about-me-intro {
@@ -110,7 +130,8 @@ body {
 
 img {
   display: block;
-  max-width: 100%;
+  /* max-width: 100%; */
+  max-width: 50%;
 }
 
 strong {
@@ -176,6 +197,7 @@ h3 {
 .section__subtitle--intro,
 .section__subtitle--about {
   background: var(--clr-accent);
+
   padding: 0.25em 1em;
   font-family: var(--ff-secondary);
   margin-bottom: 1em;
@@ -226,6 +248,12 @@ h3 {
   border-radius: 50%;
 }
 
+.center-img {
+  display: flex;
+  /* background-color: red; */
+  justify-content: center;
+}
+
 .section__subtitle--intro {
   display: inline-block;
 }
@@ -258,8 +286,6 @@ h3 {
     position: relative;
     left: -1.5em;
     width: calc(100% + 1.5em);
-
-    /* background-color: red; */
   }
 }
 

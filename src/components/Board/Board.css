@@ -1,0 +1,39 @@
+.board {
+  height: 540px;
+
+  width: 630px;
+
+  background-color: blue;
+  border: 10px solid navy;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  /* cursor: pointer; */
+
+  /* cursor: url("../../images/actual-red-disc.png"), auto; */
+  cursor: url("../../images/actual-yellow-disc.png"), auto;
+}
+
+.winner-text {
+  height: 30px;
+  text-align: center;
+}
+
+.red-text {
+  color: red;
+}
+
+.yellow-text {
+  color: yellow;
+}
+
+.new-game {
+  height: 30px;
+  width: 100px;
+  background-color: #0362fc;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
