@@ -6,7 +6,7 @@ import { IoMdMail } from "react-icons/io";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer" id="contact">
+      <footer className="footer">
         <p className="footer-title">CONTACT</p>
 
         <a href="mailto:prra@prra.codes" className="footer__link">

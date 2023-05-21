@@ -1,4 +1,3 @@
-import React from "react";
 import Tile from "../Tile/Tile";
 import "./Board.css";
 import { useState } from "react";
