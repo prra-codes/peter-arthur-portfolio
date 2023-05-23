@@ -1,0 +1,34 @@
+.board {
+  background-color: blue;
+  border: 10px solid navy;
+  cursor: url("../../images/actual-yellow-disc.png"), auto;
+  display: flex;
+  flex-wrap: wrap;
+  height: 540px;
+  margin: 0 auto;
+  width: 630px;
+}
+
+.winner-text {
+  height: 30px;
+  text-align: center;
+}
+
+.red-text {
+  color: red;
+}
+
+.yellow-text {
+  color: yellow;
+}
+
+.new-game {
+  background-color: #0362fc;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  height: 30px;
+  width: 100px;
+}
