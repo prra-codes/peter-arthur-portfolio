@@ -1,17 +1,30 @@
 .board {
   background-color: blue;
   border: 10px solid navy;
-  cursor: url("../../images/actual-yellow-disc.png"), auto;
+  cursor: pointer;
   display: flex;
   flex-wrap: wrap;
-  height: 540px;
+  height: 297px;
   margin: 0 auto;
-  width: 630px;
+  width: 346.5px;
+}
+
+.connect-4-header {
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #fff;
 }
 
 .winner-text {
-  height: 30px;
   text-align: center;
+}
+
+.turn-info {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #fff;
 }
 
 .red-text {
@@ -22,11 +35,16 @@
   color: yellow;
 }
 
+.new-game-div {
+  display: flex;
+  justify-content: center;
+}
+
 .new-game {
   background-color: #0362fc;
   border: none;
   border-radius: 6px;
-  color: white;
+  color: #fff;
   cursor: pointer;
   font-weight: bold;
   height: 30px;

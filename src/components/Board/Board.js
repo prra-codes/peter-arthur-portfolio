@@ -180,10 +180,13 @@ const Board = () => {
     height: "100%",
   };
   return (
-    <div>
+    <div className="connect-four">
       {" "}
       {gameOver && <Confetti style={confettiStyles} />}
-      <div>
+      <div className="center">
+        <h3 className="connect-4-header">Connect 4</h3>
+      </div>
+      <div className="new-game-div">
         <button className="new-game" onClick={newGame}>
           NEW GAME
         </button>
@@ -191,13 +194,16 @@ const Board = () => {
       <div className="winner-text">
         {" "}
         {winner === null ? (
-          <h2> Player {currentPlayer} Turn</h2>
+          <h3 className="turn-info"> Player {currentPlayer} Turn</h3>
         ) : winner === RED ? (
-          <h2 className="red-text"> Player Red Wins! Loser starts next 😏</h2>
+          <h3 className="red-text turn-info">
+            {" "}
+            Player Red Wins! Loser starts next 😏
+          </h3>
         ) : (
-          <h2 className="yellow-text">
+          <h3 className="yellow-text turn-info">
             Player Yellow Wins! Loser starts next 😏
-          </h2>
+          </h3>
         )}
       </div>
       <div className="board">{tiles}</div>

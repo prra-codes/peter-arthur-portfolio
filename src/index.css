@@ -20,14 +20,30 @@
 
 .flex-website-and-connect-four {
   display: flex;
+  justify-content: space-evenly;
 }
 
-.intro-width {
+.intro {
   max-width: 600px;
 }
 
+.connect-four {
+  max-width: 500px;
+}
+
+.intro-width {
+  width: 50%;
+
+  display: flex;
+  justify-content: center;
+}
+
 .connect-four-width {
-  max-width: 50%;
+  width: 50%;
+  background-color: #303030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 p {
