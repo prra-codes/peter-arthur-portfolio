@@ -32,18 +32,17 @@
 }
 
 .intro-width {
-  width: 50%;
-
   display: flex;
   justify-content: center;
+  width: 50%;
 }
 
 .connect-four-width {
-  width: 50%;
+  align-items: center;
   background-color: #303030;
   display: flex;
   justify-content: center;
-  align-items: center;
+  width: 50%;
 }
 
 p {
