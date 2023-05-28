@@ -11,7 +11,6 @@ const Tile = ({ color, id, setPiece }) => {
       style={{
         backgroundColor: color,
       }}
-      title={id}
       onClick={() => setPiece(y, x)}
     ></div>
   );

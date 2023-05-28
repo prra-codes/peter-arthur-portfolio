@@ -1,6 +1,6 @@
 import Tile from "../Tile/Tile";
 import "./Board.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
 
 const RED = "Red";
@@ -19,8 +19,23 @@ const Board = () => {
   const [currentPlayer, setCurrentPlayer] = useState(RED);
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState(null);
+  const [cursorXY, setCursorXY] = useState({ x: 0, y: 0 });
 
   const [currColumns, setCurrColumns] = useState([5, 5, 5, 5, 5, 5, 5]); // array to mark the height of each column, starts at bottom row
+
+  useEffect(() => {
+    const moveCursor = (e) => {
+      const x = e.clientX - 16;
+      const y = e.clientY - 16;
+      setCursorXY({ x, y });
+    };
+
+    window.addEventListener("mousemove", moveCursor);
+
+    return () => {
+      window.removeEventListener("mousemove", moveCursor);
+    };
+  }, []);
 
   function setPiece(y, x) {
     if (gameOver) {
@@ -183,6 +198,14 @@ const Board = () => {
     <div className="connect-four">
       {" "}
       {gameOver && <Confetti style={confettiStyles} />}
+      <div
+        className={`cursor ${
+          currentPlayer === RED ? "red-background" : "yellow-background"
+        }`}
+        style={{
+          transform: `translate(${cursorXY.x}px, ${cursorXY.y}px)`,
+        }}
+      />
       <div className="center">
         <h3 className="connect-4-header">Connect 4</h3>
       </div>
