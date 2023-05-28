@@ -196,13 +196,10 @@ const Board = () => {
         {winner === null ? (
           <h3 className="turn-info"> Player {currentPlayer} Turn</h3>
         ) : winner === RED ? (
-          <h3 className="red-text turn-info">
-            {" "}
-            Player Red Wins! Loser starts next 😏
-          </h3>
+          <h3 className="red-text turn-info"> Red Wins! Loser starts 😏</h3>
         ) : (
           <h3 className="yellow-text turn-info">
-            Player Yellow Wins! Loser starts next 😏
+            Yellow Wins! Loser starts 😏
           </h3>
         )}
       </div>

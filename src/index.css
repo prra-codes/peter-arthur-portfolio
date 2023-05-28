@@ -45,6 +45,31 @@
   width: 50%;
 }
 
+@media (max-width: 750px) {
+  .flex-website-and-connect-four {
+    flex-direction: column;
+  }
+
+  .connect-four-width {
+    padding-bottom: 2rem;
+    width: 100%;
+  }
+
+  img {
+    display: block;
+    min-width: 230px;
+    max-width: 50%;
+  }
+
+  .intro-width {
+    width: 100%;
+  }
+
+  .self-description {
+    text-align: center;
+  }
+}
+
 p {
   font-size: 1.5rem;
 }

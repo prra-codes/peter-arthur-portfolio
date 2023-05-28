@@ -12,7 +12,7 @@ const WebsiteInfo = () => {
         <p className="section__subtitle--about center more-space">
           Economics graduate turned React developer
         </p>
-        <div>
+        <div className="self-description">
           <p>
             Working to grow as a front-end developer and also gain skill at core
             algorithms and data structures.

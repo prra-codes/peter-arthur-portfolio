@@ -41,12 +41,26 @@
 }
 
 .winner-text {
+  color: #fff;
   text-align: center;
 }
 
 .turn-info {
-  color: #fff;
   font-size: 1.2rem;
   margin-bottom: 10px;
   margin-top: 10px;
+}
+
+@media (max-width: 750px) {
+  .board {
+    border: 10px solid navy;
+    height: 216px;
+    width: 252px;
+  }
+
+  .turn-info {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
 }
