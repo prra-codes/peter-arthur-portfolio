@@ -54,10 +54,10 @@ const Board = () => {
     const boardCopy = [...boardArr]; // making copy so board can be updated
 
     if (currentPlayer === RED) {
-      boardCopy[y][x] = RED;
+      boardCopy[y][x] = `linear-gradient(to bottom right, #df7880, #c82525)`;
       setCurrentPlayer(YELLOW);
     } else if (currentPlayer === YELLOW) {
-      boardCopy[y][x] = YELLOW;
+      boardCopy[y][x] = `linear-gradient(to bottom right, #f4e887, #a99523)`;
       setCurrentPlayer(RED);
     }
 
@@ -147,7 +147,9 @@ const Board = () => {
   }
 
   function decideWinner(y, x) {
-    if (boardArr[y][x] === RED) {
+    if (
+      boardArr[y][x] === `linear-gradient(to bottom right, #df7880, #c82525)`
+    ) {
       setWinner(RED);
       setGameOver(true);
     } else {
@@ -185,6 +187,11 @@ const Board = () => {
           key={y + " " + x}
           id={y + "-" + x}
           setPiece={setPiece}
+          boxShadow={
+            boardArr[y][x] === null
+              ? ""
+              : "1.5px 0px 3px 1px rgba(80,80,80, 0.8) inset"
+          }
         />
       );
     }

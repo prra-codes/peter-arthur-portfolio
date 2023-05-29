@@ -1,6 +1,6 @@
 import "./Tile.css";
 
-const Tile = ({ color, id, setPiece }) => {
+const Tile = ({ color, id, setPiece, boxShadow }) => {
   let coords = id.split("-");
   let y = Number(coords[0]);
   let x = Number(coords[1]);
@@ -9,7 +9,8 @@ const Tile = ({ color, id, setPiece }) => {
     <div
       className="tile"
       style={{
-        backgroundColor: color,
+        background: color,
+        boxShadow: boxShadow,
       }}
       onClick={() => setPiece(y, x)}
     ></div>
