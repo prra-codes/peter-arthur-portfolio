@@ -20,7 +20,7 @@ const Board = () => {
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState(null);
   const [cursorXY, setCursorXY] = useState({ x: 0, y: 0 });
-
+  const [showNewGameButton, setShowNewGameButton] = useState(false);
   const [currColumns, setCurrColumns] = useState([5, 5, 5, 5, 5, 5, 5]); // array to mark the height of each column, starts at bottom row
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Board = () => {
     currColumnsCopy[x] = y - 1; // so row moves up by 1 row
 
     setCurrColumns(currColumnsCopy); // updating columns
-
+    showGameButton();
     checkWinner();
   }
 
@@ -74,6 +74,16 @@ const Board = () => {
 
   const ySize = 6;
   const xSize = 7;
+
+  function showGameButton() {
+    for (let y = 0; y < ySize; y++) {
+      for (let x = 0; x < xSize; x++) {
+        if (boardArr[y][x] !== null) {
+          setShowNewGameButton(true);
+        }
+      }
+    }
+  }
 
   function checkWinner() {
     // horizontally
@@ -168,6 +178,7 @@ const Board = () => {
     ]);
     setCurrColumns([5, 5, 5, 5, 5, 5, 5]);
     setGameOver(false);
+    setShowNewGameButton(false);
 
     if (winner === RED) {
       setCurrentPlayer(YELLOW);
@@ -213,27 +224,26 @@ const Board = () => {
           transform: `translate(${cursorXY.x}px, ${cursorXY.y}px)`,
         }}
       />
-      <div className="center">
-        <h3 className="connect-4-header">Connect 4</h3>
-      </div>
-      <div className="new-game-div">
-        <button className="new-game" onClick={newGame}>
-          NEW GAME
-        </button>
-      </div>
-      <div className="winner-text">
-        {" "}
+      <div className="winner-text"> </div>
+      <div className="board">
+        {tiles}
         {winner === null ? (
-          <h3 className="turn-info"> Player {currentPlayer} Turn</h3>
+          ""
         ) : winner === RED ? (
-          <h3 className="red-text turn-info"> Red Wins! Loser starts 😏</h3>
+          <h1 className="winner-red">RED WINS!</h1>
         ) : (
-          <h3 className="yellow-text turn-info">
-            Yellow Wins! Loser starts 😏
-          </h3>
+          <h1 className="winner-yellow">YELLOW WINS!</h1>
         )}
       </div>
-      <div className="board">{tiles}</div>
+      {showNewGameButton ? (
+        <div className="new-game-div">
+          <button className="new-game" onClick={newGame}>
+            NEW GAME?
+          </button>
+        </div>
+      ) : (
+        <div className="new-game-div"></div>
+      )}
     </div>
   );
 };

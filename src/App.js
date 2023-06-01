@@ -13,7 +13,6 @@ function App() {
           <WebsiteInfo />
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

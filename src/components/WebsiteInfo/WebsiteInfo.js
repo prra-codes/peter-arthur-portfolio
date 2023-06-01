@@ -1,4 +1,7 @@
 import profilePicture from "../../images/peter-arthur-profile.jpg";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { IoMdMail } from "react-icons/io";
 
 const WebsiteInfo = () => {
   return (
@@ -17,8 +20,25 @@ const WebsiteInfo = () => {
             Working to grow as a front-end developer and also gain skill at core
             algorithms and data structures.
           </p>
-          <p>Other projects can be found on my Github page linked below.</p>
         </div>
+        <ul className="social-list">
+          <li>
+            <a href="mailto:prra@prra.codes" className="footer__link">
+              {" "}
+              prra@prra.codes
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/prra-codes" target="_blank">
+              Github
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/peter-arthur/" target="_blank">
+              LinkedIn
+            </a>
+          </li>
+        </ul>
       </section>
     </div>
   );
