@@ -20,14 +20,57 @@
 
 .flex-website-and-connect-four {
   display: flex;
+  justify-content: space-evenly;
+  min-height: 100vh;
 }
 
-.intro-width {
+.intro {
   max-width: 600px;
 }
 
+.connect-four {
+  max-width: 500px;
+}
+
+.intro-width {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  min-height: 100vh;
+}
+
 .connect-four-width {
-  max-width: 50%;
+  align-items: center;
+  display: flex;
+  flex: 2;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.self-description {
+  text-align: center;
+}
+
+@media (max-width: 750px) {
+  .flex-website-and-connect-four {
+    flex-direction: column;
+  }
+
+  .connect-four-width {
+    padding-bottom: 2rem;
+    width: 100%;
+  }
+
+  img {
+    display: block;
+    min-width: 230px;
+    max-width: 50%;
+  }
+
+  .intro-width {
+    width: 100%;
+  }
 }
 
 p {
@@ -49,8 +92,8 @@ a {
 /* General styles  */
 
 body {
-  background: var(--clr-light);
-  color: var(--clr-dark);
+  background: var(--clr-dark);
+  color: var(--clr-light);
   font-family: var(--ff-primary);
   font-size: var(--fs-body);
   line-height: 1.6;
@@ -67,8 +110,6 @@ img {
   max-width: 50%;
 }
 
-/* Buttons */
-
 h2 {
   font-size: var(--fs-h2);
   line-height: 1;
@@ -77,6 +118,7 @@ h2 {
 
 .section__subtitle--about {
   background: var(--clr-accent);
+  color: var(--clr-dark);
   font-family: var(--ff-secondary);
   margin-bottom: 1em;
   padding: 0.25em 1em;
@@ -97,49 +139,14 @@ h2 {
   margin-top: 0.5em;
 }
 
-/* Footer  */
-
-.footer {
-  background: #111;
-  color: var(--clr-accent);
-  font-size: var(--fs-h3);
-  padding: 0.25em 0;
-  text-align: center;
-}
-
-.footer a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.footer-title {
-  font-size: 40px;
-  font-weight: var(--fw-bold);
-  margin: 0;
-  padding: 0.25em 0;
-}
-
-.footer_link:hover,
-.social-list__link:hover {
-  opacity: 0.7;
-}
-
-.footer__link:hover {
-  text-decoration: underline;
-}
-
 .social-list {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   list-style: none;
   padding: 0;
 }
 
-.social-list__item {
-  margin: 0 0.5em;
-}
-
-.social-list__link {
-  font-size: var(--fs-h2);
-  padding: 0.5em;
+.social-list a {
+  color: var(--clr-light);
+  margin: 1rem;
 }

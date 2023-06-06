@@ -1,6 +1,6 @@
 import Tile from "../Tile/Tile";
 import "./Board.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
 
 const RED = "Red";
@@ -19,8 +19,23 @@ const Board = () => {
   const [currentPlayer, setCurrentPlayer] = useState(RED);
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState(null);
-
+  const [cursorXY, setCursorXY] = useState({ x: 0, y: 0 });
+  const [showNewGameButton, setShowNewGameButton] = useState(false);
   const [currColumns, setCurrColumns] = useState([5, 5, 5, 5, 5, 5, 5]); // array to mark the height of each column, starts at bottom row
+
+  useEffect(() => {
+    const moveCursor = (e) => {
+      const x = e.clientX - 16;
+      const y = e.clientY - 16;
+      setCursorXY({ x, y });
+    };
+
+    window.addEventListener("mousemove", moveCursor);
+
+    return () => {
+      window.removeEventListener("mousemove", moveCursor);
+    };
+  }, []);
 
   function setPiece(y, x) {
     if (gameOver) {
@@ -39,10 +54,10 @@ const Board = () => {
     const boardCopy = [...boardArr]; // making copy so board can be updated
 
     if (currentPlayer === RED) {
-      boardCopy[y][x] = RED;
+      boardCopy[y][x] = `linear-gradient(to bottom right, #df7880, #c82525)`;
       setCurrentPlayer(YELLOW);
     } else if (currentPlayer === YELLOW) {
-      boardCopy[y][x] = YELLOW;
+      boardCopy[y][x] = `linear-gradient(to bottom right, #f4e887, #a99523)`;
       setCurrentPlayer(RED);
     }
 
@@ -51,7 +66,7 @@ const Board = () => {
     currColumnsCopy[x] = y - 1; // so row moves up by 1 row
 
     setCurrColumns(currColumnsCopy); // updating columns
-
+    showGameButton();
     checkWinner();
   }
 
@@ -59,6 +74,16 @@ const Board = () => {
 
   const ySize = 6;
   const xSize = 7;
+
+  function showGameButton() {
+    for (let y = 0; y < ySize; y++) {
+      for (let x = 0; x < xSize; x++) {
+        if (boardArr[y][x] !== null) {
+          setShowNewGameButton(true);
+        }
+      }
+    }
+  }
 
   function checkWinner() {
     // horizontally
@@ -132,7 +157,9 @@ const Board = () => {
   }
 
   function decideWinner(y, x) {
-    if (boardArr[y][x] === RED) {
+    if (
+      boardArr[y][x] === `linear-gradient(to bottom right, #df7880, #c82525)`
+    ) {
       setWinner(RED);
       setGameOver(true);
     } else {
@@ -151,6 +178,7 @@ const Board = () => {
     ]);
     setCurrColumns([5, 5, 5, 5, 5, 5, 5]);
     setGameOver(false);
+    setShowNewGameButton(false);
 
     if (winner === RED) {
       setCurrentPlayer(YELLOW);
@@ -170,6 +198,11 @@ const Board = () => {
           key={y + " " + x}
           id={y + "-" + x}
           setPiece={setPiece}
+          boxShadow={
+            boardArr[y][x] === null
+              ? ""
+              : "1.5px 0px 3px 1px rgba(80,80,80, 0.8) inset"
+          }
         />
       );
     }
@@ -180,27 +213,37 @@ const Board = () => {
     height: "100%",
   };
   return (
-    <div>
+    <div className="connect-four">
       {" "}
       {gameOver && <Confetti style={confettiStyles} />}
-      <div>
-        <button className="new-game" onClick={newGame}>
-          NEW GAME
-        </button>
-      </div>
-      <div className="winner-text">
-        {" "}
+      <div
+        className={`cursor ${
+          currentPlayer === RED ? "red-background" : "yellow-background"
+        }`}
+        style={{
+          transform: `translate(${cursorXY.x}px, ${cursorXY.y}px)`,
+        }}
+      />
+      <div className="winner-text"> </div>
+      <div className="board">
+        {tiles}
         {winner === null ? (
-          <h2> Player {currentPlayer} Turn</h2>
+          ""
         ) : winner === RED ? (
-          <h2 className="red-text"> Player Red Wins! Loser starts next 😏</h2>
+          <h1 className="winner-red">RED WINS!</h1>
         ) : (
-          <h2 className="yellow-text">
-            Player Yellow Wins! Loser starts next 😏
-          </h2>
+          <h1 className="winner-yellow">YELLOW WINS!</h1>
         )}
       </div>
-      <div className="board">{tiles}</div>
+      {showNewGameButton ? (
+        <div className="new-game-div">
+          <button className="new-game" onClick={newGame}>
+            NEW GAME?
+          </button>
+        </div>
+      ) : (
+        <div className="new-game-div"></div>
+      )}
     </div>
   );
 };

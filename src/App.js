@@ -6,14 +6,13 @@ function App() {
   return (
     <div>
       <div className="flex-website-and-connect-four">
-        <div className="intro-width">
-          <WebsiteInfo />
-        </div>
         <div className="connect-four-width">
           <Board />
         </div>
+        <div className="intro-width">
+          <WebsiteInfo />
+        </div>
       </div>
-      <Footer />
     </div>
   );
 }
