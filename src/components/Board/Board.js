@@ -216,14 +216,6 @@ const Board = () => {
     <div className="connect-four">
       {" "}
       {gameOver && <Confetti style={confettiStyles} />}
-      <div
-        className={`cursor ${
-          currentPlayer === RED ? "red-background" : "yellow-background"
-        }`}
-        style={{
-          transform: `translate(${cursorXY.x}px, ${cursorXY.y}px)`,
-        }}
-      />
       <div className="winner-text"> </div>
       <div className="board">
         {tiles}
@@ -235,6 +227,14 @@ const Board = () => {
           <h1 className="winner-yellow">YELLOW WINS!</h1>
         )}
       </div>
+      <div
+        className={`cursor ${
+          currentPlayer === RED ? "red-background" : "yellow-background"
+        }`}
+        style={{
+          transform: `translate(${cursorXY.x}px, ${cursorXY.y}px)`,
+        }}
+      />
       {showNewGameButton ? (
         <div className="new-game-div">
           <button className="new-game" onClick={newGame}>

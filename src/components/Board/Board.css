@@ -1,7 +1,3 @@
-* {
-  cursor: none;
-}
-
 .board {
   background: linear-gradient(
     to bottom right,
@@ -16,6 +12,27 @@
   margin: 0 auto;
   position: relative;
   width: 346.5px;
+}
+
+.board:hover {
+  cursor: none;
+}
+
+.cursor {
+  display: none;
+}
+
+.board:hover + .cursor {
+  display: inline-block;
+  border-radius: 50%;
+  cursor: none;
+  height: 41px;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 41px;
+  z-index: 2;
 }
 
 .winner-red {
@@ -36,19 +53,8 @@
   left: -130px;
   position: absolute;
   top: -10px;
-  -webkit-background-clip: text;
   width: 650px;
-}
-
-.cursor {
-  border-radius: 50%;
-  height: 41px;
-  left: 0;
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  width: 41px;
-  z-index: 2;
+  -webkit-background-clip: text;
 }
 
 .red-background {
