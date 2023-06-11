@@ -2,6 +2,7 @@ import Tile from "../Tile/Tile";
 import "./Board.css";
 import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
+import axios from "axios";
 
 const RED = "Red";
 const YELLOW = "Yellow";
@@ -15,13 +16,19 @@ const Board = () => {
     [null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null],
   ]);
-
+  const [message, setMessage] = useState("");
   const [currentPlayer, setCurrentPlayer] = useState(RED);
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState(null);
   const [cursorXY, setCursorXY] = useState({ x: 0, y: 0 });
   const [showNewGameButton, setShowNewGameButton] = useState(false);
   const [currColumns, setCurrColumns] = useState([5, 5, 5, 5, 5, 5, 5]); // array to mark the height of each column, starts at bottom row
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/message")
+      .then((res) => setMessage(res.data.message));
+  }, []);
 
   useEffect(() => {
     const moveCursor = (e) => {
@@ -215,6 +222,7 @@ const Board = () => {
   return (
     <div className="connect-four">
       {" "}
+      <h1>{message}</h1>
       {gameOver && <Confetti style={confettiStyles} />}
       <div className="winner-text"> </div>
       <div className="board">
