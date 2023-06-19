@@ -232,7 +232,9 @@ const Board = () => {
         ) : winner === RED ? (
           <h1 className="winner-red">RED WINS!</h1>
         ) : (
-          <h1 className="winner-yellow">YELLOW WINS!</h1>
+          <h1 className="winner-yellow">
+            YELLOW <br></br> WINS!
+          </h1>
         )}
       </div>
       <div

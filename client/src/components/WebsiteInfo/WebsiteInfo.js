@@ -16,7 +16,7 @@ const WebsiteInfo = () => {
           Economics graduate turned React developer
         </p>
         <div className="self-description">
-          <p>
+          <p className="">
             Working to grow as a front-end developer and also gain skill at core
             algorithms and data structures.
           </p>
