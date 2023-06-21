@@ -23,9 +23,9 @@
 }
 
 .board:hover + .cursor {
-  display: inline-block;
   border-radius: 50%;
   cursor: none;
+  display: inline-block;
   height: 41px;
   left: 0;
   pointer-events: none;
