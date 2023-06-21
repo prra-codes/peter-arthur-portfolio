@@ -1,0 +1,147 @@
+.board {
+  background: linear-gradient(
+    to bottom right,
+    rgba(101, 129, 200, 0.8),
+    rgba(33, 67, 162, 0.6)
+  );
+  border: 10px solid #2143a2;
+  box-shadow: 5px 10px 10px 4px black;
+  display: flex;
+  flex-wrap: wrap;
+  height: 297px;
+  margin: 0 auto;
+  position: relative;
+  width: 346.5px;
+}
+
+.board:hover {
+  cursor: none;
+}
+
+.cursor {
+  display: none;
+}
+
+.board:hover + .cursor {
+  border-radius: 50%;
+  cursor: none;
+  display: inline-block;
+  height: 41px;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 41px;
+  z-index: 2;
+}
+
+.winner-red {
+  background: linear-gradient(to bottom right, #ff9999, #ff0000);
+  color: transparent;
+  font-size: 4.8rem;
+  left: -15px;
+  position: absolute;
+  top: 20px;
+  width: 500px;
+  -webkit-background-clip: text;
+}
+
+.winner-yellow {
+  background: linear-gradient(to bottom right, #ffff99, #ffff00);
+  color: transparent;
+  font-size: 5rem;
+  left: 20px;
+  position: absolute;
+  top: -40px;
+  width: 650px;
+  -webkit-background-clip: text;
+}
+
+.red-background {
+  background: linear-gradient(to bottom right, #df7880, #c82525);
+}
+
+.yellow-background {
+  background: linear-gradient(to bottom right, #f4e887, #a99523);
+}
+
+.connect-4-header {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.new-game {
+  background: none;
+  border: none;
+  border-radius: 0px;
+  color: #fff;
+  cursor: pointer;
+  display: inline;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.new-game-div {
+  display: flex;
+  height: 30px;
+  justify-content: right;
+  margin-top: 1rem;
+}
+
+.turn-info {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+@media (max-width: 750px) {
+  .board {
+    height: 216px;
+    width: 252px;
+  }
+
+  .turn-info {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .board:hover {
+    cursor: none;
+  }
+
+  .cursor {
+    display: none;
+  }
+
+  .board:hover + .cursor {
+    display: inline-block;
+    border-radius: 50%;
+    cursor: none;
+    height: 28px;
+    left: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    width: 28px;
+    z-index: 2;
+  }
+
+  .winner-red {
+    font-size: 3.5rem;
+    left: -15px;
+    position: absolute;
+    top: 10px;
+    width: 500px;
+  }
+
+  .winner-yellow {
+    font-size: 3.5rem;
+    left: 15px;
+    position: absolute;
+    top: -30px;
+    width: 650px;
+  }
+}
