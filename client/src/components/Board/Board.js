@@ -16,6 +16,8 @@ const Board = () => {
     [null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null],
   ]);
+
+  // First thing: use a useEffect to get ask the server the state of the game, i.e. boardArr
   const [message, setMessage] = useState("");
   const [currentPlayer, setCurrentPlayer] = useState(RED);
   const [gameOver, setGameOver] = useState(false);
@@ -23,12 +25,6 @@ const Board = () => {
   const [cursorXY, setCursorXY] = useState({ x: 0, y: 0 });
   const [showNewGameButton, setShowNewGameButton] = useState(false);
   const [currColumns, setCurrColumns] = useState([5, 5, 5, 5, 5, 5, 5]); // array to mark the height of each column, starts at bottom row
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/message")
-      .then((res) => setMessage(res.data.message));
-  }, []);
 
   useEffect(() => {
     const moveCursor = (e) => {
@@ -44,35 +40,9 @@ const Board = () => {
     };
   }, []);
 
-  function setPiece(y, x) {
-    if (gameOver) {
-      return;
-    } // if game over, cannot set piece
+  async function setPiece(y, x) {
+    await axios.post("http://localhost:8000/setPiece", { x, y }); // passing x and y to the server
 
-    const currColumnsCopy = [...currColumns];
-
-    y = currColumnsCopy[x];
-    // gets row of specific column
-
-    if (y < 0) {
-      return;
-    } // if r < 0, means column is filled, so cannot place piece
-
-    const boardCopy = [...boardArr]; // making copy so board can be updated
-
-    if (currentPlayer === RED) {
-      boardCopy[y][x] = `linear-gradient(to bottom right, #df7880, #c82525)`;
-      setCurrentPlayer(YELLOW);
-    } else if (currentPlayer === YELLOW) {
-      boardCopy[y][x] = `linear-gradient(to bottom right, #f4e887, #a99523)`;
-      setCurrentPlayer(RED);
-    }
-
-    setBoardArr(boardCopy); // updating board state
-
-    currColumnsCopy[x] = y - 1; // so row moves up by 1 row
-
-    setCurrColumns(currColumnsCopy); // updating columns
     showGameButton();
     checkWinner();
   }
@@ -222,7 +192,6 @@ const Board = () => {
   return (
     <div className="connect-four">
       {" "}
-      <h1>{message}</h1>
       {gameOver && <Confetti style={confettiStyles} />}
       <div className="winner-text"> </div>
       <div className="board">
