@@ -18,13 +18,21 @@ const Board = () => {
   ]);
 
   // First thing: use a useEffect to get ask the server the state of the game, i.e. boardArr
-  const [message, setMessage] = useState("");
-  const [currentPlayer, setCurrentPlayer] = useState(RED);
+  const [currentPlayer, setCurrentPlayer] = useState("");
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState(null);
   const [cursorXY, setCursorXY] = useState({ x: 0, y: 0 });
   const [showNewGameButton, setShowNewGameButton] = useState(false);
-  const [currColumns, setCurrColumns] = useState([5, 5, 5, 5, 5, 5, 5]); // array to mark the height of each column, starts at bottom row
+  const [currentColumns, setCurrentColumns] = useState([5, 5, 5, 5, 5, 5, 5]); // array to mark the height of each column, starts at bottom row
+
+  useEffect(() => {
+    axios.get("http://localhost:8000/fetchGameStateVariables").then((res) => {
+      console.log(res.data);
+      setBoardArr(res.data.boardArr);
+      setCurrentPlayer(res.data.currentPlayer);
+      setCurrentColumns(res.data.currentColumns);
+    });
+  }, []); // I want to add boardArr, currentPlayer and  as a dependency, but it generates an infinite loop...
 
   useEffect(() => {
     const moveCursor = (e) => {
@@ -144,6 +152,7 @@ const Board = () => {
       setGameOver(true);
     }
   }
+
   function newGame() {
     setBoardArr([
       [null, null, null, null, null, null, null],
@@ -153,7 +162,7 @@ const Board = () => {
       [null, null, null, null, null, null, null],
       [null, null, null, null, null, null, null],
     ]);
-    setCurrColumns([5, 5, 5, 5, 5, 5, 5]);
+    setCurrentColumns([5, 5, 5, 5, 5, 5, 5]);
     setGameOver(false);
     setShowNewGameButton(false);
 
