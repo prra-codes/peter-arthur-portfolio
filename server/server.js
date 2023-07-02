@@ -41,7 +41,12 @@ app.post("/setPiece", async (req, res) => {
 
   currentColumns[x] = y - 1; // so row moves up by 1 row
   console.log("BOARD", boardArr);
-  res.send(JSON.stringify({ boardArr })); // sending boardArr to /setPiece url
+  res.status(200);
+  res.send();
+});
+
+app.get("/fetchGameStateVariables", (req, res) => {
+  res.json({ boardArr, currentPlayer, currentColumns }); // sending boardArr, currentPlayer and currentColumns variables to client
 });
 
 app.listen(8000, () => {
