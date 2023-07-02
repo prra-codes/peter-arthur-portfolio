@@ -8,6 +8,7 @@ const RED = "Red";
 const YELLOW = "Yellow";
 
 const Board = () => {
+  console.log("BOARD RENDERING");
   const [boardArr, setBoardArr] = useState([
     [null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null],
@@ -26,13 +27,26 @@ const Board = () => {
   const [currentColumns, setCurrentColumns] = useState([5, 5, 5, 5, 5, 5, 5]); // array to mark the height of each column, starts at bottom row
 
   useEffect(() => {
-    axios.get("http://localhost:8000/fetchGameStateVariables").then((res) => {
-      console.log(res.data);
-      setBoardArr(res.data.boardArr);
-      setCurrentPlayer(res.data.currentPlayer);
-      setCurrentColumns(res.data.currentColumns);
-    });
-  }, []); // I want to add boardArr, currentPlayer and  as a dependency, but it generates an infinite loop...
+    const interval = setInterval(
+      () =>
+        axios
+          .get("http://localhost:8000/fetchGameStateVariables")
+          .then((res) => {
+            console.log("USE EFFECT STARTING");
+            setBoardArr(res.data.boardArr);
+            setCurrentPlayer(res.data.currentPlayer);
+            setCurrentColumns(res.data.currentColumns);
+            console.log("USE EFFECT FINISHED");
+            console.log(res.data.boardArr);
+            // every time you call a set function, the component re-renders
+          }),
+      500
+    );
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [setCurrentColumns, setBoardArr, setCurrentPlayer]);
 
   useEffect(() => {
     const moveCursor = (e) => {

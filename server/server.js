@@ -41,6 +41,8 @@ app.post("/setPiece", async (req, res) => {
 
   currentColumns[x] = y - 1; // so row moves up by 1 row
   console.log("BOARD", boardArr);
+  res.status(200);
+  res.send();
 });
 
 app.get("/fetchGameStateVariables", (req, res) => {
