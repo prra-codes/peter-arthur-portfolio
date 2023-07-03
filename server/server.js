@@ -1,7 +1,7 @@
 const express = require("express"); // imports express
 const cors = require("cors"); // imports cors
 
-const boardArr = [
+let boardArr = [
   [null, null, null, null, null, null, null],
   [null, null, null, null, null, null, null],
   [null, null, null, null, null, null, null],
@@ -9,8 +9,12 @@ const boardArr = [
   [null, null, null, null, null, null, null],
   [null, null, null, null, null, null, null],
 ];
-const currentColumns = [5, 5, 5, 5, 5, 5, 5];
+let currentColumns = [5, 5, 5, 5, 5, 5, 5];
 let currentPlayer = "Red";
+// let winner = null;
+// let gameOver = false;
+let currentX = null;
+let currentY = null;
 const app = express(); // creates express application
 
 app.use(cors());
@@ -21,15 +25,12 @@ app.post("/setPiece", async (req, res) => {
 
   const x = data["x"];
   const y = currentColumns[x]; // gets row of specific column
+  currentX = data["x"];
+  currentY = currentColumns[x];
 
   if (y < 0) {
     return;
   } // if y < 0, means column is filled, so cannot place piece.
-
-  console.log("X", x);
-  console.log("Y", y);
-  console.log("CURRENT PLAYER", currentPlayer);
-  console.log("CURRENT COLUMNS", currentColumns);
 
   if (currentPlayer === "Red") {
     boardArr[y][x] = "linear-gradient(to bottom right, #df7880, #c82525)";
@@ -40,13 +41,24 @@ app.post("/setPiece", async (req, res) => {
   }
 
   currentColumns[x] = y - 1; // so row moves up by 1 row
-  console.log("BOARD", boardArr);
   res.status(200);
   res.send();
 });
 
 app.get("/fetchGameStateVariables", (req, res) => {
-  res.json({ boardArr, currentPlayer, currentColumns }); // sending boardArr, currentPlayer and currentColumns variables to client
+  res.json({ boardArr, currentPlayer, currentColumns, currentX, currentY }); // sending boardArr, currentPlayer and currentColumns variables to client
+});
+
+app.post("/newGame", async (req, res) => {
+  const newGameData = req.body;
+  console.log(newGameData);
+
+  const resetCurrentColumns = newGameData["resetCurrentColumns"];
+
+  currentColumns = [...resetCurrentColumns];
+
+  const resetGameBoard = newGameData["newBoard"];
+  boardArr = [...resetGameBoard];
 });
 
 app.listen(8000, () => {

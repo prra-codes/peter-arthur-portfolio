@@ -8,7 +8,6 @@ const RED = "Red";
 const YELLOW = "Yellow";
 
 const Board = () => {
-  console.log("BOARD RENDERING");
   const [boardArr, setBoardArr] = useState([
     [null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null],
@@ -18,7 +17,6 @@ const Board = () => {
     [null, null, null, null, null, null, null],
   ]);
 
-  // First thing: use a useEffect to get ask the server the state of the game, i.e. boardArr
   const [currentPlayer, setCurrentPlayer] = useState("");
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState(null);
@@ -32,17 +30,21 @@ const Board = () => {
         axios
           .get("http://localhost:8000/fetchGameStateVariables")
           .then((res) => {
-            console.log("USE EFFECT STARTING");
+            console.log();
             setBoardArr(res.data.boardArr);
-            setCurrentPlayer(res.data.currentPlayer);
-            setCurrentColumns(res.data.currentColumns);
-            console.log("USE EFFECT FINISHED");
             console.log(res.data.boardArr);
-            // every time you call a set function, the component re-renders
+            setCurrentColumns(res.data.currentColumns);
+            console.log(res.data.currentColumns);
+            // decideWinner(res.data.currentY, res.data.currentX);
+            // checkWinner();
+            setCurrentPlayer(res.data.currentPlayer);
+            console.log(res.data.currentPlayer);
+            console.log(res.data.currentX, res.data.currentY);
           }),
       500
     );
 
+    // console.log(boardArr, currentPlayer, currentColumns);
     return () => {
       clearInterval(interval);
     };
@@ -67,6 +69,37 @@ const Board = () => {
 
     showGameButton();
     checkWinner();
+  }
+
+  async function newGame() {
+    const newBoard = [
+      [null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null],
+    ];
+
+    const resetCurrentColumns = [5, 5, 5, 5, 5, 5, 5];
+    let player = winner === RED ? YELLOW : RED;
+
+    // let player = null;
+    // if (winner === RED) {
+    //   player = YELLOW;
+    // } else if (winner === YELLOW) {
+    //   player = RED;
+    // }
+
+    await axios.post("http://localhost:8000/newGame", {
+      newBoard,
+      resetCurrentColumns,
+      player,
+    });
+
+    setShowNewGameButton(false);
+    setWinner(null);
+    setGameOver(false);
   }
 
   const tiles = [];
@@ -156,38 +189,43 @@ const Board = () => {
   }
 
   function decideWinner(y, x) {
+    // await axios.post("http://localhost:8000/decideWinner", { x, y }); // passing x and y to the server
+
     if (
       boardArr[y][x] === `linear-gradient(to bottom right, #df7880, #c82525)`
     ) {
-      setWinner(RED);
+      setWinner(currentPlayer);
       setGameOver(true);
-    } else {
-      setWinner(YELLOW);
+    } else if (
+      boardArr[y][x] === `linear-gradient(to bottom right, #f4e887, #a99523)`
+    ) {
+      setWinner(currentPlayer);
       setGameOver(true);
     }
   }
 
-  function newGame() {
-    setBoardArr([
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-    ]);
-    setCurrentColumns([5, 5, 5, 5, 5, 5, 5]);
-    setGameOver(false);
-    setShowNewGameButton(false);
+  // function newGame() {
+  //   setBoardArr([
+  //     [null, null, null, null, null, null, null],
+  //     [null, null, null, null, null, null, null],
+  //     [null, null, null, null, null, null, null],
+  //     [null, null, null, null, null, null, null],
+  //     [null, null, null, null, null, null, null],
+  //     [null, null, null, null, null, null, null],
+  //   ]);
+  //   setCurrentColumns([5, 5, 5, 5, 5, 5, 5]);
 
-    if (winner === RED) {
-      setCurrentPlayer(YELLOW);
-    } else if (winner === YELLOW) {
-      setCurrentPlayer(RED);
-    }
+  //   setShowNewGameButton(false);
 
-    setWinner(null);
-  }
+  //   if (winner === RED) {
+  //     setCurrentPlayer(YELLOW);
+  //   } else if (winner === YELLOW) {
+  //     setCurrentPlayer(RED);
+  //   }
+
+  //   setWinner(null);
+  //   setGameOver(false);
+  // }
 
   for (let y = 0; y < ySize; y++) {
     let rowArr = [];
