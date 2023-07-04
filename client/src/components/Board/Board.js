@@ -30,7 +30,6 @@ const Board = () => {
         axios
           .get("http://localhost:8000/fetchGameStateVariables")
           .then((res) => {
-            console.log();
             setBoardArr(res.data.boardArr);
             console.log(res.data.boardArr);
             setCurrentColumns(res.data.currentColumns);
@@ -39,16 +38,19 @@ const Board = () => {
             // checkWinner();
             setCurrentPlayer(res.data.currentPlayer);
             console.log(res.data.currentPlayer);
-            console.log(res.data.currentX, res.data.currentY);
           }),
       500
     );
 
-    // console.log(boardArr, currentPlayer, currentColumns);
     return () => {
       clearInterval(interval);
     };
   }, [setCurrentColumns, setBoardArr, setCurrentPlayer]);
+
+  useEffect(() => {
+    showGameButton();
+    checkWinner();
+  }, [boardArr]); // this useEffect runs anytime boardArr changes
 
   useEffect(() => {
     const moveCursor = (e) => {
@@ -66,9 +68,6 @@ const Board = () => {
 
   async function setPiece(y, x) {
     await axios.post("http://localhost:8000/setPiece", { x, y }); // passing x and y to the server
-
-    showGameButton();
-    checkWinner();
   }
 
   async function newGame() {
@@ -83,13 +82,6 @@ const Board = () => {
 
     const resetCurrentColumns = [5, 5, 5, 5, 5, 5, 5];
     let player = winner === RED ? YELLOW : RED;
-
-    // let player = null;
-    // if (winner === RED) {
-    //   player = YELLOW;
-    // } else if (winner === YELLOW) {
-    //   player = RED;
-    // }
 
     await axios.post("http://localhost:8000/newGame", {
       newBoard,
@@ -189,43 +181,18 @@ const Board = () => {
   }
 
   function decideWinner(y, x) {
-    // await axios.post("http://localhost:8000/decideWinner", { x, y }); // passing x and y to the server
-
     if (
       boardArr[y][x] === `linear-gradient(to bottom right, #df7880, #c82525)`
     ) {
-      setWinner(currentPlayer);
+      setWinner(RED);
       setGameOver(true);
     } else if (
       boardArr[y][x] === `linear-gradient(to bottom right, #f4e887, #a99523)`
     ) {
-      setWinner(currentPlayer);
+      setWinner(YELLOW);
       setGameOver(true);
     }
   }
-
-  // function newGame() {
-  //   setBoardArr([
-  //     [null, null, null, null, null, null, null],
-  //     [null, null, null, null, null, null, null],
-  //     [null, null, null, null, null, null, null],
-  //     [null, null, null, null, null, null, null],
-  //     [null, null, null, null, null, null, null],
-  //     [null, null, null, null, null, null, null],
-  //   ]);
-  //   setCurrentColumns([5, 5, 5, 5, 5, 5, 5]);
-
-  //   setShowNewGameButton(false);
-
-  //   if (winner === RED) {
-  //     setCurrentPlayer(YELLOW);
-  //   } else if (winner === YELLOW) {
-  //     setCurrentPlayer(RED);
-  //   }
-
-  //   setWinner(null);
-  //   setGameOver(false);
-  // }
 
   for (let y = 0; y < ySize; y++) {
     let rowArr = [];

@@ -11,22 +11,16 @@ let boardArr = [
 ];
 let currentColumns = [5, 5, 5, 5, 5, 5, 5];
 let currentPlayer = "Red";
-// let winner = null;
-// let gameOver = false;
-let currentX = null;
-let currentY = null;
 const app = express(); // creates express application
 
 app.use(cors());
 app.use(express.json());
 
-app.post("/setPiece", async (req, res) => {
+app.post("/setPiece", (req, res) => {
   const data = req.body; // x and y positions
 
   const x = data["x"];
   const y = currentColumns[x]; // gets row of specific column
-  currentX = data["x"];
-  currentY = currentColumns[x];
 
   if (y < 0) {
     return;
@@ -43,15 +37,19 @@ app.post("/setPiece", async (req, res) => {
   currentColumns[x] = y - 1; // so row moves up by 1 row
   res.status(200);
   res.send();
+  console.log("CURRENT PLAYER", currentPlayer);
 });
 
 app.get("/fetchGameStateVariables", (req, res) => {
-  res.json({ boardArr, currentPlayer, currentColumns, currentX, currentY }); // sending boardArr, currentPlayer and currentColumns variables to client
+  res.json({
+    boardArr,
+    currentPlayer,
+    currentColumns,
+  }); // sending boardArr, currentPlayer and currentColumns variables to client
 });
 
 app.post("/newGame", async (req, res) => {
   const newGameData = req.body;
-  console.log(newGameData);
 
   const resetCurrentColumns = newGameData["resetCurrentColumns"];
 
@@ -59,6 +57,13 @@ app.post("/newGame", async (req, res) => {
 
   const resetGameBoard = newGameData["newBoard"];
   boardArr = [...resetGameBoard];
+
+  const player = newGameData["player"];
+
+  currentPlayer = player;
+
+  res.status(200);
+  res.send();
 });
 
 app.listen(8000, () => {
