@@ -37,7 +37,6 @@ app.post("/setPiece", (req, res) => {
   currentColumns[x] = y - 1; // so row moves up by 1 row
   res.status(200);
   res.send();
-  console.log("CURRENT PLAYER", currentPlayer);
 });
 
 app.get("/fetchGameStateVariables", (req, res) => {
@@ -49,18 +48,20 @@ app.get("/fetchGameStateVariables", (req, res) => {
 });
 
 app.post("/newGame", async (req, res) => {
-  const newGameData = req.body;
+  const newBoard = [
+    [null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null],
+  ];
 
-  const resetCurrentColumns = newGameData["resetCurrentColumns"];
+  const resetCurrentColumns = [5, 5, 5, 5, 5, 5, 5];
 
   currentColumns = [...resetCurrentColumns];
 
-  const resetGameBoard = newGameData["newBoard"];
-  boardArr = [...resetGameBoard];
-
-  const player = newGameData["player"];
-
-  currentPlayer = player;
+  boardArr = [...newBoard];
 
   res.status(200);
   res.send();

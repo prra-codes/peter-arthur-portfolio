@@ -31,13 +31,8 @@ const Board = () => {
           .get("http://localhost:8000/fetchGameStateVariables")
           .then((res) => {
             setBoardArr(res.data.boardArr);
-            console.log(res.data.boardArr);
             setCurrentColumns(res.data.currentColumns);
-            console.log(res.data.currentColumns);
-            // decideWinner(res.data.currentY, res.data.currentX);
-            // checkWinner();
             setCurrentPlayer(res.data.currentPlayer);
-            console.log(res.data.currentPlayer);
           }),
       500
     );
@@ -71,23 +66,7 @@ const Board = () => {
   }
 
   async function newGame() {
-    const newBoard = [
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-    ];
-
-    const resetCurrentColumns = [5, 5, 5, 5, 5, 5, 5];
-    let player = winner === RED ? YELLOW : RED;
-
-    await axios.post("http://localhost:8000/newGame", {
-      newBoard,
-      resetCurrentColumns,
-      player,
-    });
+    await axios.post("http://localhost:8000/newGame", {});
 
     setShowNewGameButton(false);
     setWinner(null);
