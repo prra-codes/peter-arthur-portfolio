@@ -8,7 +8,6 @@ const RED = "Red";
 const YELLOW = "Yellow";
 
 const Board = () => {
-  console.log("BOARD RENDERING");
   const [boardArr, setBoardArr] = useState([
     [null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null],
@@ -18,7 +17,6 @@ const Board = () => {
     [null, null, null, null, null, null, null],
   ]);
 
-  // First thing: use a useEffect to get ask the server the state of the game, i.e. boardArr
   const [currentPlayer, setCurrentPlayer] = useState("");
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState(null);
@@ -32,13 +30,9 @@ const Board = () => {
         axios
           .get("http://localhost:8000/fetchGameStateVariables")
           .then((res) => {
-            console.log("USE EFFECT STARTING");
             setBoardArr(res.data.boardArr);
-            setCurrentPlayer(res.data.currentPlayer);
             setCurrentColumns(res.data.currentColumns);
-            console.log("USE EFFECT FINISHED");
-            console.log(res.data.boardArr);
-            // every time you call a set function, the component re-renders
+            setCurrentPlayer(res.data.currentPlayer);
           }),
       500
     );
@@ -47,6 +41,11 @@ const Board = () => {
       clearInterval(interval);
     };
   }, [setCurrentColumns, setBoardArr, setCurrentPlayer]);
+
+  useEffect(() => {
+    showGameButton();
+    checkWinner();
+  }, [boardArr]); // this useEffect runs anytime boardArr changes
 
   useEffect(() => {
     const moveCursor = (e) => {
@@ -64,9 +63,14 @@ const Board = () => {
 
   async function setPiece(y, x) {
     await axios.post("http://localhost:8000/setPiece", { x, y }); // passing x and y to the server
+  }
 
-    showGameButton();
-    checkWinner();
+  async function newGame() {
+    await axios.post("http://localhost:8000/newGame", {});
+
+    setShowNewGameButton(false);
+    setWinner(null);
+    setGameOver(false);
   }
 
   const tiles = [];
@@ -161,32 +165,12 @@ const Board = () => {
     ) {
       setWinner(RED);
       setGameOver(true);
-    } else {
+    } else if (
+      boardArr[y][x] === `linear-gradient(to bottom right, #f4e887, #a99523)`
+    ) {
       setWinner(YELLOW);
       setGameOver(true);
     }
-  }
-
-  function newGame() {
-    setBoardArr([
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-    ]);
-    setCurrentColumns([5, 5, 5, 5, 5, 5, 5]);
-    setGameOver(false);
-    setShowNewGameButton(false);
-
-    if (winner === RED) {
-      setCurrentPlayer(YELLOW);
-    } else if (winner === YELLOW) {
-      setCurrentPlayer(RED);
-    }
-
-    setWinner(null);
   }
 
   for (let y = 0; y < ySize; y++) {
