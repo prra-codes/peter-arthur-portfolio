@@ -1,5 +1,7 @@
+const path = require("path");
 const express = require("express"); // imports express
 const cors = require("cors"); // imports cors
+const PORT = process.env.PORT || 8000;
 
 let boardArr = [
   [null, null, null, null, null, null, null],
@@ -15,6 +17,8 @@ const app = express(); // creates express application
 
 app.use(cors());
 app.use(express.json());
+
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 app.post("/setPiece", (req, res) => {
   const data = req.body; // x and y positions
@@ -67,6 +71,10 @@ app.post("/newGame", async (req, res) => {
   res.send();
 });
 
-app.listen(8000, () => {
-  console.log(`Server is running on port 8000.`);
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on ${PORT}`);
 });
