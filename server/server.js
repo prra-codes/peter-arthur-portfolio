@@ -18,7 +18,7 @@ const app = express(); // creates express application
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.resolve(__dirname, "../client/build")));
+app.use(express.static(path.resolve(__dirname + "/public")));
 
 app.post("/setPiece", (req, res) => {
   const data = req.body; // x and y positions
@@ -69,10 +69,6 @@ app.post("/newGame", async (req, res) => {
 
   res.status(200);
   res.send();
-});
-
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
 
 app.listen(PORT, () => {

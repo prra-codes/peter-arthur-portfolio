@@ -1,12 +1,15 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "engines": {
+    "node": "18.x"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "cd client && npm install && npm run build",
+    "build": "npm install",
     "dev": "nodemon server.js"
   },
   "keywords": [],

@@ -27,13 +27,11 @@ const Board = () => {
   useEffect(() => {
     const interval = setInterval(
       () =>
-        axios
-          .get("http://localhost:8000/fetchGameStateVariables")
-          .then((res) => {
-            setBoardArr(res.data.boardArr);
-            setCurrentColumns(res.data.currentColumns);
-            setCurrentPlayer(res.data.currentPlayer);
-          }),
+        axios.get("/fetchGameStateVariables").then((res) => {
+          setBoardArr(res.data.boardArr);
+          setCurrentColumns(res.data.currentColumns);
+          setCurrentPlayer(res.data.currentPlayer);
+        }),
       500
     );
 
@@ -62,11 +60,11 @@ const Board = () => {
   }, []);
 
   async function setPiece(y, x) {
-    await axios.post("http://localhost:8000/setPiece", { x, y }); // passing x and y to the server
+    await axios.post("/setPiece", { x, y }); // passing x and y to the server
   }
 
   async function newGame() {
-    await axios.post("http://localhost:8000/newGame", {});
+    await axios.post("/newGame", {});
 
     setShowNewGameButton(false);
     setWinner(null);
