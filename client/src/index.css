@@ -52,7 +52,7 @@
   text-align: center;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 770px) {
   .flex-website-and-connect-four {
     flex-direction: column;
   }
@@ -149,4 +149,21 @@ h2 {
 .social-list a {
   color: var(--clr-light);
   margin: 1rem;
+}
+
+@media (max-width: 400px) {
+  .self-description {
+    display: flex;
+    justify-content: center;
+  }
+
+  .self-text {
+    width: 70%;
+    margin: 0;
+  }
+
+  .social-list {
+    flex-direction: column;
+    align-items: center;
+  }
 }
