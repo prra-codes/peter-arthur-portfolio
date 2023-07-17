@@ -31,6 +31,9 @@ const Board = () => {
           setBoardArr(res.data.boardArr);
           setCurrentColumns(res.data.currentColumns);
           setCurrentPlayer(res.data.currentPlayer);
+          setWinner(res.data.winner);
+          setGameOver(res.data.gameOver);
+          setShowNewGameButton(res.data.showNewGameButton);
         }),
       500
     );
@@ -38,12 +41,14 @@ const Board = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [setCurrentColumns, setBoardArr, setCurrentPlayer]);
-
-  useEffect(() => {
-    showGameButton();
-    checkWinner();
-  }, [boardArr]); // this useEffect runs anytime boardArr changes
+  }, [
+    setCurrentColumns,
+    setBoardArr,
+    setCurrentPlayer,
+    setWinner,
+    setGameOver,
+    setShowNewGameButton,
+  ]);
 
   useEffect(() => {
     const moveCursor = (e) => {
@@ -64,112 +69,13 @@ const Board = () => {
   }
 
   async function newGame() {
-    await axios.post("/newGame", {});
-
-    setShowNewGameButton(false);
-    setWinner(null);
-    setGameOver(false);
+    await axios.post("/newGame");
   }
 
   const tiles = [];
 
   const ySize = 6;
   const xSize = 7;
-
-  function showGameButton() {
-    for (let y = 0; y < ySize; y++) {
-      for (let x = 0; x < xSize; x++) {
-        if (boardArr[y][x] !== null) {
-          setShowNewGameButton(true);
-        }
-      }
-    }
-  }
-
-  function checkWinner() {
-    // horizontally
-
-    for (let y = 0; y < ySize; y++) {
-      for (let x = 0; x < xSize - 3; x++) {
-        if (boardArr[y][x] !== null) {
-          if (
-            boardArr[y][x] === boardArr[y][x + 1] &&
-            boardArr[y][x + 1] === boardArr[y][x + 2] &&
-            boardArr[y][x + 2] === boardArr[y][x + 3]
-          ) {
-            decideWinner(y, x);
-            return;
-            // don't have to check vertically or diagonally when we've found a connect 4 horizontally
-          }
-        }
-      }
-    }
-
-    // vertically
-
-    for (let x = 0; x < xSize; x++) {
-      for (let y = 0; y < ySize - 3; y++) {
-        if (boardArr[y][x] !== null) {
-          if (
-            boardArr[y][x] === boardArr[y + 1][x] &&
-            boardArr[y + 1][x] === boardArr[y + 2][x] &&
-            boardArr[y + 2][x] === boardArr[y + 3][x]
-          ) {
-            decideWinner(y, x);
-            return; // don't have to check diagonally or anti-diagonally when we've found a connect 4 vertically
-          }
-        }
-      }
-    }
-
-    // anti diagonally
-
-    for (let y = 0; y < ySize - 3; y++) {
-      for (let x = 0; x < xSize - 3; x++) {
-        if (boardArr[y][x] !== null) {
-          if (
-            boardArr[y][x] === boardArr[y + 1][x + 1] &&
-            boardArr[y + 1][x + 1] === boardArr[y + 2][x + 2] &&
-            boardArr[y + 2][x + 2] === boardArr[y + 3][x + 3]
-          ) {
-            decideWinner(y, x);
-            return; // don't have to check diagonally when we've found a connect 4 anti-diagonally
-          }
-        }
-      }
-    }
-
-    // diagonally
-
-    for (let y = 3; y < ySize; y++) {
-      for (let x = 0; x < xSize - 3; x++) {
-        if (boardArr[y][x] !== null) {
-          if (
-            boardArr[y][x] === boardArr[y - 1][x + 1] &&
-            boardArr[y - 1][x + 1] === boardArr[y - 2][x + 2] &&
-            boardArr[y - 2][x + 2] === boardArr[y - 3][x + 3]
-          ) {
-            decideWinner(y, x);
-            return;
-          }
-        }
-      }
-    }
-  }
-
-  function decideWinner(y, x) {
-    if (
-      boardArr[y][x] === `linear-gradient(to bottom right, #df7880, #c82525)`
-    ) {
-      setWinner(RED);
-      setGameOver(true);
-    } else if (
-      boardArr[y][x] === `linear-gradient(to bottom right, #f4e887, #a99523)`
-    ) {
-      setWinner(YELLOW);
-      setGameOver(true);
-    }
-  }
 
   for (let y = 0; y < ySize; y++) {
     let rowArr = [];

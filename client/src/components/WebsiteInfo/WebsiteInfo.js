@@ -1,7 +1,4 @@
 import profilePicture from "../../images/peter-arthur-profile.jpg";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { IoMdMail } from "react-icons/io";
 
 const WebsiteInfo = () => {
   return (
