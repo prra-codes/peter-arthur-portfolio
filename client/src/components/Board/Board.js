@@ -82,7 +82,13 @@ const Board = () => {
     for (let x = 0; x < xSize; x++) {
       rowArr.push(
         <Tile
-          color={boardArr[y][x]}
+          color={
+            boardArr[y][x] === null
+              ? ""
+              : boardArr[y][x] === "Red"
+              ? "linear-gradient(to bottom right, #df7880, #c82525)"
+              : "linear-gradient(to bottom right, #f4e887, #a99523)"
+          }
           key={y + " " + x}
           id={y + "-" + x}
           setPiece={setPiece}
