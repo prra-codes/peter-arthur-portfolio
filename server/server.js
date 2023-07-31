@@ -7,8 +7,8 @@ const PORT = process.env.PORT || 8000;
 
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  organization: process.env.OPEN_AI_ORG_ID,
-  apiKey: process.env.OPEN_AI_API_KEY,
+  // organization: process.env.OPEN_AI_ORG_ID,
+  apiKey: process.env.NEW_OPEN_AI_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -38,6 +38,7 @@ let boardArr = [
   [null, null, null, null, null, null, null],
   [null, null, null, null, null, null, null],
 ];
+
 let currentColumns = [5, 5, 5, 5, 5, 5, 5];
 let currentPlayer = "Red";
 let gameOver = false;
@@ -65,6 +66,10 @@ app.get("/fetchGameStateVariables", (req, res) => {
 });
 
 async function setPieceHere(x) {
+  if (gameOver === true) {
+    return false;
+  } // if human player wins, human cannot place another piece whilst it is game over
+
   const y = currentColumns[x]; // gets row of specific column
 
   if (y < 0) {
@@ -163,37 +168,46 @@ async function setPieceHere(x) {
   function decideWinner(y, x) {
     if (boardArr[y][x] === `Red`) {
       winner = "Red";
+      currentPlayer = "Red"; // when Red wins, currentPlayer remains Red
       gameOver = true;
     } else if (boardArr[y][x] === `Yellow`) {
       winner = "Yellow";
+      currentPlayer = "Yellow"; // when Yellow wins, currentPlayer remains Yellow
       gameOver = true;
     }
   }
 }
 
 app.post("/setPiece", async (req, res) => {
+  if (currentPlayer === "Yellow") {
+    return false;
+  } // If it is the computer's (Yellow's) turn, the human player (Red) cannot make another move
   const data = req.body; // x and y positions
 
   const x = data["x"];
 
   await setPieceHere(x);
+  await openAiSetPiece();
 
   console.log(boardArr);
-
-  await openAiSetPiece();
   res.status(200);
   res.send();
 });
 
 async function openAiSetPiece() {
-  const content = `You are playing Connect 4. You are the ${currentPlayer} player. The game board is modeled as a JavaScript array. Output your next move as a JSON object with only an "x" field.
+  if (gameOver === true) {
+    return false;
+  } // when human player wins, openAi isn't called to place an x value to place a piece
+
+  const content = `You are playing Connect 4. You are the ${currentPlayer} player. The game board is modeled as a JavaScript array. Assume your opponent will always play optimally, and try to minimise the maximum gain of your opponent, output your next move as a JSON object with only an "x" field. 
  
   ${JSON.stringify(boardArr)} 
 
-  ${currentPlayer}'s move:`;
-
+  Yellow's move:`;
+  console.log("CONTENT", content);
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
+
     messages: [
       {
         role: "user",
@@ -201,15 +215,11 @@ async function openAiSetPiece() {
       },
     ],
   });
-  console.log("FROM API");
   const responseString = response.data.choices[0].message.content;
-  const responseData = JSON.parse(response.data.choices[0].message.content); // over here call to new func. e.g. responseArr,
-  console.log(responseData);
-  console.log(responseData.x);
+  console.log("RESPONSE STRING", responseString);
+  const responseData = JSON.parse(response.data.choices[0].message.content);
 
   await setPieceHere(responseData.x);
-  // openAiSetPiece()
-  //over here call the new function when it exists...  setPiece(responseData.x) when exists. So it'll pass in the value of x from the API
 }
 
 app.post("/newGame", (req, res) => {
@@ -231,6 +241,7 @@ app.post("/newGame", (req, res) => {
   winner = null;
   gameOver = false;
   showNewGameButton = false;
+  currentPlayer = "Red";
 
   res.status(200);
   res.send();
