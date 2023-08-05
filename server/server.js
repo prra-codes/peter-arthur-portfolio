@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express"); // imports express
 const cors = require("cors"); // imports cors
-const sgMail = require("@sendgrid/mail");
+
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 
