@@ -7,10 +7,14 @@ const PORT = process.env.PORT || 8000;
 
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  apiKey: process.env.OPEN_AI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
+const app = express(); // creates express application
+app.use(cors());
+app.use(express.json());
+app.use(express.static(path.resolve(__dirname + "/public")));
 
 let boardArr = [
   [null, null, null, null, null, null, null],
@@ -26,15 +30,9 @@ let currentPlayer = "Red";
 let gameOver = false;
 let winner = null;
 let showNewGameButton = false;
-const app = express(); // creates express application
 
 const ySize = 6;
 const xSize = 7;
-
-app.use(cors());
-app.use(express.json());
-
-app.use(express.static(path.resolve(__dirname + "/public")));
 
 app.get("/fetchGameStateVariables", (req, res) => {
   res.json({
