@@ -10,7 +10,7 @@ const WebsiteInfo = () => {
         </div>
         <h2 className="center">Peter Arthur</h2>
         <p className="section__subtitle--about center more-space">
-          Economics graduate turned React developer
+          Economics graduate turned React developer a
         </p>
         <div className="self-description">
           <p className="self-text">
