@@ -5,21 +5,19 @@ const WebsiteInfo = () => {
     <div className="intro">
       <section className="about-me-intro">
         {" "}
-        <div className="image-alignment ">
+        <div className="img-alignment ">
           <img
             src={profilePicture}
-            className="image-size"
+            className="img-size"
             alt="a picture of Peter Arthur"
           />
         </div>
-        <p className="text-alignment section__subtitle--about text-alignment">
-          Peter Arthur
-        </p>
+        <p className="section__subtitle--about text-alignment">Peter Arthur</p>
         <p className="section__subtitle--about text-alignment more-space">
           Economics graduate turned full stack hacker
         </p>
         <div className="text-alignment">
-          <p className="self-text">
+          <p>
             This page is an experiment in real-time application development
             using LLMs. It is an SPA built with React. The backend is built with
             Express. It’s deployed on Heroku. The opponent is{" "}
