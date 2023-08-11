@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.193ff717.css",
+    "main.js": "/static/js/main.bbf5a9fa.js",
+    "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
+    "static/media/peter-arthur-profile.jpg": "/static/media/peter-arthur-profile.0e1a76391ece5e40deb2.jpg",
+    "index.html": "/index.html",
+    "main.193ff717.css.map": "/static/css/main.193ff717.css.map",
+    "main.bbf5a9fa.js.map": "/static/js/main.bbf5a9fa.js.map",
+    "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.193ff717.css",
+    "static/js/main.bbf5a9fa.js"
+  ]
+}
