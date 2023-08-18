@@ -5,7 +5,7 @@ const WebsiteInfo = () => {
     <div className="intro">
       <section className="about-me-intro">
         {" "}
-        <div className="img-alignment ">
+        <div className="img-alignment">
           <img
             src={profilePicture}
             className="img-size"

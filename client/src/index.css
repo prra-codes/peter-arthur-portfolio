@@ -75,8 +75,7 @@
 }
 
 .portfolio-code-link {
-  color: var(--clr-light);
-  /* margin: 1rem; */
+  color: #00ffff;
 }
 
 @media (max-width: 770px) {
@@ -155,8 +154,6 @@ h2 {
 .section__subtitle--about {
   color: var(--clr-light);
   font-family: var(--ff-secondary);
-
-  /* margin: 0; */
 }
 
 /*  Intro section  */
@@ -175,6 +172,6 @@ h2 {
 }
 
 .social-list a {
-  color: var(--clr-light);
+  color: #00ffff;
   margin: 1rem;
 }

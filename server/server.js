@@ -180,7 +180,7 @@ async function openAiSetPiece() {
   ${JSON.stringify(boardArr)}
 
   Yellow's move:`;
-  console.log("CONTENT", content);
+
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: [
