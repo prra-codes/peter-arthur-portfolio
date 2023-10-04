@@ -20,16 +20,9 @@ const WebsiteInfo = () => {
           <p>
             This page is an experiment in real-time application development
             using LLMs. It is an SPA built with React. The backend is built with
-            Express. It’s deployed on Heroku. The opponent is{" "}
-            <span className="line-through">GPT 4 Code Interpreter</span>{" "}
-            <span
-              title="I'm still waiting on GPT 4 access"
-              className="dotted-line"
-            >
-              GPT 3.5 Turbo
-            </span>
-            . I am still waiting for API access to GPT-4. Code Interpreter kicks
-            ass. I can’t wait for that to be opened up.{" "}
+            Express. It’s deployed on Heroku. The opponent is GPT-4. I am still
+            waiting for API access to GPT-4 Code Interpreter. I can’t wait for
+            that to be opened up.{" "}
             <span className="underline">
               <a
                 href="https://github.com/prra-codes/peter-arthur-portfolio"
