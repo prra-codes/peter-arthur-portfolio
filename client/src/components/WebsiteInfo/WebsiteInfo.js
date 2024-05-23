@@ -20,9 +20,7 @@ const WebsiteInfo = () => {
           <p>
             This page is an experiment in real-time application development
             using LLMs. It is an SPA built with React. The backend is built with
-            Express. It’s deployed on Heroku. The opponent is GPT-3.5. I am
-            still waiting for API access to GPT-4 Code Interpreter. I can’t wait
-            for that to be opened up.{" "}
+            Express. It’s deployed on Heroku. The opponent is GPT-3.5.{" "}
             <span className="underline">
               <a
                 href="https://github.com/prra-codes/peter-arthur-portfolio"
